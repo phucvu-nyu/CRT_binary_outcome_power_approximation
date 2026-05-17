@@ -1,6 +1,5 @@
-site_name: Poster Website
-site_url: ""
-site_description: "Poster for [your project]"
+site_name: CRT binary outcome power approximation
+site_url: "https://phucvu-nyu.github.io/CRT_binary_outcome_power_approximation/"
 docs_dir: docs
 site_dir: site
 
@@ -76,7 +75,7 @@ extra_css:
 
 nav:
   - Overview: index.md
-  - Poster:
+  - Technical details:
     - Overview & challenges: poster/overview.md
     - Marginal vs latent ICC: poster/icc.md
     - General idea: poster/idea.md
