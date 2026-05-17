@@ -1,0 +1,419 @@
+\documentclass[aspectratio=169]{beamer} % 16:9; change to 11pt,aspectratio=43 if you prefer
+
+% Theme (pick one: Madrid, Berlin, CambridgeUS, etc.)
+\usetheme{Madrid}
+
+% Basic packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage[round]{natbib}
+\bibliographystyle{apalike}
+% Title info
+\title[BST 245]{Power Estimation for Between Cluster Randomized Factorial Trials for Binary Outcomes}
+\author{Phuc Vu}
+\institute{HSPH}
+\date{\today} % or a fixed date
+\AtBeginSection[]{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\begin{document}
+
+\begin{frame}{Marginal ICC for Binary Outcomes}
+
+\begin{itemize}
+  \item For two individuals $i \neq j$ in the same cluster:
+  \[
+    \rho_{\text{marg}}
+    = \mathrm{Corr}(Y_{i}, Y_{j})
+    = \frac{\mathrm{Cov}(Y_i, Y_j)}
+           {\sqrt{\mathrm{Var}(Y_i)\,\mathrm{Var}(Y_j)}} .
+  \]
+  \medskip
+  
+  \item For binary outcomes,
+  \[
+    \mathrm{Var}(Y_i) = p(1-p).
+  \]
+  
+  \item Interpretation:
+    \begin{itemize}
+      \item Probability-scale measure of within-cluster similarity.
+      \item Automatically shrinks as $p \to 0$ or $p \to 1$.
+      \item Used in nearly all CRT power formulas.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Latent ICC in Logistic Mixed Models}
+
+\textbf{Random-intercept GLMM:}
+\[
+  \text{logit}\{\Pr(Y_{ij}=1)\}
+   = \beta_0 + \beta^\top X_{ij} + u_j,
+  \qquad
+  u_j \sim N(0,\tau^2).
+\]
+
+\begin{itemize}
+  \item Equivalent latent-variable view:
+  \[
+    Z_{ij} = X_{ij}\beta + u_j + \varepsilon_{ij}, 
+    \qquad
+    \varepsilon_{ij} \sim \text{Logistic}(0,\pi^2/3).
+  \]
+
+  \item The \textbf{latent ICC} is:
+  \[
+    \rho_{\text{latent}}
+    = \frac{\tau^2}{\tau^2 + \pi^2/3}.
+  \]
+
+  \item Natural for simulations that use GLMMs as the data-generating model.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Working Model for Power Calculations}
+
+\begin{itemize}
+  \item For power estimation, we work with a
+        \textbf{working linear model} at the cluster level:
+    \[
+      Z_j = X_j \beta + \varepsilon_j.
+    \]
+
+  \item We do not assume normal outcomes —
+        this is a \textbf{variance-based approximation}
+        used only for power calculations.
+
+  \item If the error variances
+        $\mathrm{Var}(\varepsilon_j) = w_j$ are known or approximated,
+        then the covariance of $\hat\beta$ is given by
+    \[
+      \mathrm{Var}(\hat\beta)
+      = (X^\top W^{-1} X)^{-1}.
+    \]
+
+  \item The key question becomes:
+        \textbf{how should $Z_j$ and $W$ be defined for binary CRTs?}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{The Idea}
+
+\begin{itemize}
+  \item We work at the \textbf{cluster level} and focus on the
+        \textbf{logit of the cluster mean outcome}.
+
+  \item Approximate the logistic mixed model by a
+        \textbf{linear model}:
+    \[
+      \text{logit}(\bar Y_j)
+      \;\approx\;
+      X_j \beta + \varepsilon_j,
+    \]
+    where $\varepsilon_j$ captures clustering, nonlinearity,
+    and unequal cluster sizes.
+
+  \item \textbf{Key reduction:}
+        Power estimation depends entirely on approximating
+        \[
+          \mathrm{Var}\{\text{logit}(\bar Y_j)\}.
+        \]
+
+  \item Once this variance is known, power follows from
+        standard GLS / Wald theory for linear models.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Two Routes to Approximate the Variance}
+
+\begin{itemize}
+  \item From the Idea, power estimation reduces to approximating
+    \[
+      \mathrm{Var}\{\text{logit}(\bar Y_j)\}.
+    \]
+
+  \item We consider \textbf{two complementary approaches}:
+
+  \begin{enumerate}
+    \item \textbf{Analytic approximation}
+      \begin{itemize}
+        \item Uses marginal means, ICCs, and the delta method.
+        \item Fast, interpretable, and suitable for design.
+      \end{itemize}
+
+    \item \textbf{Monte Carlo approximation}
+      \begin{itemize}
+        \item Simulates cluster means from the full GLMM.
+        \item More computationally intensive, but closer to the true model.
+      \end{itemize}
+  \end{enumerate}
+
+  \item Both approaches produce a working weight matrix $W$
+        for GLS-based power calculations.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Analytic Approximation}
+
+\begin{enumerate}
+  \item \textbf{Specify the factorial structure:}
+        effect-coded $2^k$ design, full set of interactions for truth.
+        
+  \item \textbf{Fix coefficients $\beta$} (main effects + selected interactions).
+
+  \item \textbf{Compute conditional probabilities:}
+        \[
+        p_{\text{cond}} = \text{logit}^{-1}(\eta), \qquad
+        \eta = \beta_0 + X\beta.
+        \]
+
+  \item \textbf{Marginalize over random intercepts:}
+        \[
+          p_{\text{marg}} = 
+          \mathbb{E}\left[ \text{logit}^{-1}(\eta + u) \right],
+          \quad u \sim N(0,\tau^2).
+        \]
+
+  \item \textbf{Convert latent ICC to marginal ICC} for each cluster using Goldstein.
+
+  \item \textbf{Approximate logit-scale covariance and compute power:}
+        use CRT variance + delta method to form a diagonal weight matrix $W$,
+        obtain the working covariance
+        \[
+          \Sigma = (X^\top W^{-1} X)^{-1},
+        \]
+        and apply standard GLMM/Wald theory to a contrast $c^\top\beta$
+        (with small-sample $t$ df) to estimate power.
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{Variance Approximation for Binary Outcomes}
+
+\begin{itemize}
+  \item For each cluster $j$ with marginal mean $p_j$ and size $m_j$,
+        the variance of an individual outcome is
+    \[
+      \mathrm{Var}(Y_{ij}) = p_j(1 - p_j),
+      \qquad i = 1,\dots,m_j.
+    \]
+
+  \item Under a marginal ICC $\rho_{\text{marg}}$, the variance of the
+        \textbf{cluster mean} is approximated by
+    \[
+      \mathrm{Var}(\bar Y_j)
+      \approx
+      \frac{p_j(1 - p_j)}{m_j}
+      \Big[\,1 + (m_j - 1)\rho_{\text{marg}}\,\Big].
+    \]
+
+  \item Applying the \textbf{delta method} to the logit of the mean gives
+    \[
+      \mathrm{Var}\{\text{logit}(p_j)\}
+      \approx
+      \frac{\mathrm{Var}(\bar Y_j)}{p_j^2(1 - p_j)^2}.
+    \]
+
+  \item These per–cluster (or per–cell) logit variances define the diagonal
+        working weight matrix
+    \[
+      W = \mathrm{diag}(w_1,\dots,w_J).
+    \]
+\end{itemize}
+
+\end{frame}
+\begin{frame}{The Final Piece: Linking Latent and Marginal ICC}
+
+\begin{itemize}
+  \item Power formulas for clustered binary data require
+        \textbf{marginal ICC} $\rho_{\text{marg}}$.
+  \item But simulations based on GLMMs specify \textbf{latent ICC}
+        via the random intercept variance $\tau^2$.
+  \medskip
+
+  \item We therefore need a bridge between the two.
+
+  \item Goldstein’s approximation:
+    \[
+      \rho_{\text{marg}}
+      \;\approx\;
+      \frac{\tau^2\,p(1-p)}
+           {1 + \tau^2\,p(1-p)},
+    \]
+    where
+    \[
+      \rho_{\text{latent}}
+      = \frac{\tau^2}{\tau^2 + \pi^2/3}.
+    \]
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Unequal Cluster Sizes: Mean and SD Approximation}
+
+\begin{itemize}
+
+  \item Real CRTs often have \textbf{unequal cluster sizes}.
+  
+  \item Let cluster sizes follow some distribution with
+    \[
+      \bar m = \text{mean cluster size}, 
+      \qquad
+      s_m = \text{SD of cluster size}.
+    \]
+
+  \item Define the \textbf{coefficient of variation}:
+    \[
+      \text{CV} = \frac{s_m}{\bar m}.
+    \]
+
+  \item Standard design-effect adjustments replace $m_j$ by an
+        \textbf{effective cluster size}:
+    \[
+      m^\star = \bar m(1 + \text{CV}^2).
+    \]
+
+  \item Our working variance for cluster means becomes:
+    \[
+      \mathrm{Var}(\bar Y_j)
+        \;\approx\;
+        \frac{p_j(1-p_j)}{\bar m}
+        \Big[\,1 + (m^\star - 1)\rho_{\text{marg}}\,\Big].
+    \]
+
+  \item This matches common CRT practice (Eldridge \& Kerry; Hemming et al.).
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Monte Carlo Approximation}
+
+\begin{itemize}
+  \item Route number 2 is, we directly approximate
+    \[
+      \mathrm{Var}\{\text{logit}(\bar Y_j)\}
+    \]
+    under the full logistic mixed model.
+
+  \item For each factorial cell $j$:
+    \begin{enumerate}
+      \item Draw a random intercept $u_j \sim N(0,\tau^2)$.
+      \item Draw a cluster size $m_j$ from a specified distribution.
+      \item Generate $Y_{ij} \sim \text{Bernoulli}(\text{logit}^{-1}(\eta_j + u_j))$.
+      \item Compute $\bar Y_j$ and $\text{logit}(\bar Y_j)$.
+    \end{enumerate}
+
+  \item Repeating this many times yields an empirical estimate of
+    \[
+      w_j = \mathrm{Var}\{\text{logit}(\bar Y_j)\}.
+    \]
+
+  \item These variances define an alternative working weight matrix $W$
+        for GLS-based power calculations.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Power calculation given the Covariance matrix}
+
+\begin{itemize}
+  \item Expand the $2^k$ design to $K$ clusters using a 
+        \textbf{balanced cluster allocation}.
+
+  \item Working independence covariance:
+    \[
+      \Sigma 
+      = (X^\top W^{-1} X)^{-1}.
+    \]
+
+  \item This gives standard errors for any contrast:
+    \[
+      \mathrm{SE}(\hat\theta)
+      = \sqrt{c^\top \Sigma\, c}.
+    \]
+
+  \item For a main effect (e.g.\ component 1),  
+        $c$ selects the corresponding coefficient.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Small-Sample Correction and Power}
+
+\begin{itemize}
+
+  \item We test 
+    \[
+      H_0 : \theta = 0
+      \quad\text{vs}\quad
+      H_1 : \theta \neq 0.
+    \]
+
+  \item Wald statistic:
+    \[
+      t = \frac{\hat\theta}{\mathrm{SE}(\hat\theta)}.
+    \]
+
+  \item \textbf{Small-sample df correction:}
+    \[
+      \text{df} = K - p,
+    \]
+    where $p$ is the number of fixed-effect parameters
+    in the fitted model (main + 2-way).
+
+  \item Power:
+    \[
+      \text{Power}
+      = 
+      \Pr(|T_{\text{df},\lambda}| > t_{1-\alpha/2}),
+      \qquad
+      \lambda = \frac{\theta}{\mathrm{SE}}.
+    \]
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Analytic vs.\ Monte Carlo Approximation}
+
+\begin{itemize}
+  \item \textbf{Analytic approximation}
+    \begin{itemize}
+      \item Fast and closed-form; well suited for design exploration.
+      \item Relies on a delta-method approximation:
+        \[
+          \bar Y_j \;\approx\; \text{Normal}(p_j, \mathrm{Var}(\bar Y_j)).
+        \]
+      \item Accuracy improves as cluster size increases.
+      \item May be less reliable when clusters are very small or probabilities
+            are near 0 or 1.
+    \end{itemize}
+
+  \medskip
+
+  \item \textbf{Monte Carlo approximation}
+    \begin{itemize}
+      \item Directly reflects the true GLMM data-generating process.
+      \item Does not rely on normal approximations for $\bar Y_j$.
+      \item Computationally more expensive; requires repeated simulation. (still take less than $1$s to run)
+      \item Useful as a benchmark or when analytic assumptions are questionable.
+    \end{itemize}
+
+  \medskip
+
+  \item \textbf{Practical recommendation:}
+    \begin{itemize}
+      \item Use the analytic approximation when average cluster sizes are moderate
+            to large.
+      \item Use the Monte Carlo approximation when cluster sizes are small
+            or for sensitivity analysis.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\end{document}

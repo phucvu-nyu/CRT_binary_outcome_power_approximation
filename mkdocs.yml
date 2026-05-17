@@ -1,0 +1,83 @@
+site_name: Poster Website
+site_url: ""
+site_description: "Poster for [your project]"
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  features:
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - search.share
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: white
+      accent: teal
+    - scheme: slate
+      primary: black
+      accent: teal
+  font:
+    text: Noto Sans SC
+    code: Fira Code
+  favicon: assets/images/favicon-stat.png
+  logo: assets/images/stat-logo.svg
+  icon:
+    logo: logo
+    repo: fontawesome/brands/github
+
+extra:
+  generator: false
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Overview: index.md
+  - Poster:
+    - Overview & challenges: poster/overview.md
+    - Marginal vs latent ICC: poster/icc.md
+    - General idea: poster/idea.md
+    - Exact method: poster/exact_method.md
