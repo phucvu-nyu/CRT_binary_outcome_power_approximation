@@ -6,9 +6,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Poster for [your project]">
       
       
+        <link rel="canonical" href="https://phucvu-nyu.github.io/CRT_binary_outcome_power_approximation/poster/icc/">
       
       
         <link rel="prev" href="../overview/">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Marginal vs Latent ICC - Poster Website</title>
+        <title>Marginal vs Latent ICC - CRT binary outcome power approximation</title>
       
     
     
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Poster Website" class="md-header__button md-logo" aria-label="Poster Website" data-md-component="logo">
+    <a href="../.." title="CRT binary outcome power approximation" class="md-header__button md-logo" aria-label="CRT binary outcome power approximation" data-md-component="logo">
       
   <img src="../../assets/images/stat-logo.svg" alt="logo">
 
@@ -105,7 +105,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Poster Website
+            CRT binary outcome power approximation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -211,12 +211,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Poster Website" class="md-nav__button md-logo" aria-label="Poster Website" data-md-component="logo">
+    <a href="../.." title="CRT binary outcome power approximation" class="md-nav__button md-logo" aria-label="CRT binary outcome power approximation" data-md-component="logo">
       
   <img src="../../assets/images/stat-logo.svg" alt="logo">
 
     </a>
-    Poster Website
+    CRT binary outcome power approximation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -266,7 +266,7 @@
             
   
   <span class="md-ellipsis">
-    Poster
+    Technical details
   </span>
   
 
@@ -276,7 +276,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Poster
+            Technical details
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -354,18 +354,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#marginal-icc" class="md-nav__link">
+  <a href="#1-marginal-icc-correlation-on-the-observed-scale" class="md-nav__link">
     <span class="md-ellipsis">
-      Marginal ICC
+      1. Marginal ICC: correlation on the observed scale
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#latent-icc" class="md-nav__link">
+  <a href="#2-latent-icc-correlation-on-an-underlying-continuous-scale" class="md-nav__link">
     <span class="md-ellipsis">
-      Latent ICC
+      2. Latent ICC: correlation on an underlying continuous scale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-we-need-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why we need both
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-linking-the-two-goldsteins-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Linking the two: Goldstein’s approximation
     </span>
   </a>
   
@@ -456,18 +474,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#marginal-icc" class="md-nav__link">
+  <a href="#1-marginal-icc-correlation-on-the-observed-scale" class="md-nav__link">
     <span class="md-ellipsis">
-      Marginal ICC
+      1. Marginal ICC: correlation on the observed scale
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#latent-icc" class="md-nav__link">
+  <a href="#2-latent-icc-correlation-on-an-underlying-continuous-scale" class="md-nav__link">
     <span class="md-ellipsis">
-      Latent ICC
+      2. Latent ICC: correlation on an underlying continuous scale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-we-need-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why we need both
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-linking-the-two-goldsteins-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Linking the two: Goldstein’s approximation
     </span>
   </a>
   
@@ -494,36 +530,96 @@
 
 <!-- Page content -->
 <h1 id="marginal-vs-latent-icc">Marginal vs latent ICC<a class="headerlink" href="#marginal-vs-latent-icc" title="Permanent link">&para;</a></h1>
-<h2 id="marginal-icc">Marginal ICC<a class="headerlink" href="#marginal-icc" title="Permanent link">&para;</a></h2>
-<p>Defined on the observed binary scale:</p>
+<p>Cluster trials with binary outcomes often talk about “the ICC,” but there are
+<strong>two different ICCs</strong> in play. They answer slightly different questions. This page is dedicated to clarifying the two ICC definitions used in clustered
+binary trials—<strong>marginal</strong> and <strong>latent</strong>—and to explaining how we link them
+using <strong>Goldstein’s approximation</strong>. This link is what lets us move cleanly
+between design-scale quantities and the GLMM used for simulation and power.</p>
+<hr />
+<h2 id="1-marginal-icc-correlation-on-the-observed-scale">1. Marginal ICC: correlation on the observed scale<a class="headerlink" href="#1-marginal-icc-correlation-on-the-observed-scale" title="Permanent link">&para;</a></h2>
+<p>Imagine two individuals <span class="arithmatex">\(i \neq k\)</span> in the same cluster <span class="arithmatex">\(j\)</span>.<br />
+The <strong>marginal ICC</strong> is the correlation between their binary outcomes:</p>
 <div class="arithmatex">\[
 \rho_{\text{M}}
-= \frac{\mathrm{Cov}(Y_{ij}, Y_{ik})}
-       {\sqrt{\mathrm{Var}(Y_{ij}) \,\mathrm{Var}(Y_{ik})}}.
+= \frac{\mathrm{Cov}(Y_{ij}, Y_{kj})}
+       {\sqrt{\mathrm{Var}(Y_{ij}) \,\mathrm{Var}(Y_{kj})}} .
 \]</div>
+<p>For binary outcomes, <span class="arithmatex">\(\mathrm{Var}(Y_{ij}) = p_j(1-p_j)\)</span>, so:</p>
 <ul>
-<li>Depends on the outcome prevalence <span class="arithmatex">\(p\)</span>.</li>
-<li>Shrinks as <span class="arithmatex">\(p \to 0\)</span> or <span class="arithmatex">\(p \to 1\)</span>.</li>
-<li>Common in design formulas for clustered binary data.</li>
+<li><span class="arithmatex">\(\rho_{\text{M}}\)</span> <strong>depends on the prevalence</strong> <span class="arithmatex">\(p_j\)</span>.</li>
+<li>As <span class="arithmatex">\(p_j \to 0\)</span> or <span class="arithmatex">\(p_j \to 1\)</span>, the variance <span class="arithmatex">\(p_j(1-p_j)\)</span> shrinks and so
+  does <span class="arithmatex">\(\rho_{\text{M}}\)</span>.</li>
 </ul>
-<h2 id="latent-icc">Latent ICC<a class="headerlink" href="#latent-icc" title="Permanent link">&para;</a></h2>
-<p>Random-intercept logistic mixed model:</p>
+<p><strong>Interpretation</strong></p>
+<ul>
+<li>“If one person in the cluster has <span class="arithmatex">\(Y=1\)</span>, how much more likely is another
+  person in the same cluster to have <span class="arithmatex">\(Y=1\)</span>, on the <em>observed</em> 0/1 scale?”</li>
+<li>This is the ICC that appears in many textbook sample size formulas for
+  clustered binary data.</li>
+</ul>
+<hr />
+<h2 id="2-latent-icc-correlation-on-an-underlying-continuous-scale">2. Latent ICC: correlation on an underlying continuous scale<a class="headerlink" href="#2-latent-icc-correlation-on-an-underlying-continuous-scale" title="Permanent link">&para;</a></h2>
+<p>For modeling and simulation, we often use a random–intercept logistic mixed
+model:</p>
 <div class="arithmatex">\[
 \text{logit}\{\Pr(Y_{ij}=1)\}
 = \beta_0 + \beta^\top X_{ij} + b_j,
-\quad b_j \sim N(0,\tau^2),
+\quad b_j \sim N(0,\tau^2).
 \]</div>
-<p>with latent ICC</p>
+<p>Equivalently, we can think of a continuous <strong>latent variable</strong></p>
+<div class="arithmatex">\[
+Z_{ij} = X_{ij}\beta + b_j + \varepsilon_{ij},
+\quad \varepsilon_{ij} \sim \text{Logistic}(0,\pi^2/3),
+\]</div>
+<p>with <span class="arithmatex">\(Y_{ij} = 1\)</span> if <span class="arithmatex">\(Z_{ij} &gt; 0\)</span>.</p>
+<p>On this latent scale, the <strong>latent ICC</strong> is</p>
 <div class="arithmatex">\[
 \rho_{\text{L}}
 = \frac{\tau^2}{\tau^2 + \pi^2/3}.
 \]</div>
+<p>Key features:</p>
 <ul>
-<li>Does <strong>not</strong> depend on prevalence.</li>
-<li>Natural for specifying simulation models.</li>
+<li><span class="arithmatex">\(\rho_{\text{L}}\)</span> is <strong>constant across prevalences</strong>.</li>
+<li>It is determined entirely by the random–effect variance <span class="arithmatex">\(\tau^2\)</span>.</li>
+<li>It is very convenient for simulations: you can choose <span class="arithmatex">\(\rho_{\text{L}}\)</span>,
+  compute <span class="arithmatex">\(\tau^2\)</span>, and plug it into the GLMM.</li>
 </ul>
-<p>Our method links these two scales so that users can think in terms of either
-marginal or latent ICC.</p>
+<hr />
+<h2 id="3-why-we-need-both">3. Why we need both<a class="headerlink" href="#3-why-we-need-both" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Trial <strong>design formulas</strong> are written in terms of <strong>marginal ICC</strong>
+  <span class="arithmatex">\(\rho_{\text{M}}\)</span> on the observed scale.</li>
+<li><strong>Simulation models</strong> and mixed‑model software work naturally with the
+  <strong>latent ICC</strong> <span class="arithmatex">\(\rho_{\text{L}}\)</span>.</li>
+</ul>
+<p>If we are not careful, we can:</p>
+<ul>
+<li>Specify a trial assuming a certain marginal ICC,</li>
+<li>But simulate or analyze it using a mismatched latent ICC.</li>
+</ul>
+<hr />
+<h2 id="4-linking-the-two-goldsteins-approximation">4. Linking the two: Goldstein’s approximation<a class="headerlink" href="#4-linking-the-two-goldsteins-approximation" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(p\)</span> be the marginal mean outcome in a given cell, and let <span class="arithmatex">\(\tau^2\)</span> be the
+random–intercept variance from the logistic mixed model.</p>
+<p>Goldstein’s approximation gives a direct relationship between the <strong>latent</strong> and
+<strong>marginal</strong> ICCs:</p>
+<div class="arithmatex">\[
+\rho_{\text{M}}
+\approx
+\frac{\tau^2\,p(1-p)}{1 + \tau^2\,p(1-p)},
+\]</div>
+<p>where the latent ICC is</p>
+<div class="arithmatex">\[
+\rho_{\text{L}}
+= \frac{\tau^2}{\tau^2 + \pi^2/3}.
+\]</div>
+<p>This approximation has two key implications:</p>
+<ul>
+<li>For fixed <span class="arithmatex">\(\tau^2\)</span> (fixed <span class="arithmatex">\(\rho_{\text{L}}\)</span>), the marginal ICC
+  <span class="arithmatex">\(\rho_{\text{M}}\)</span> decreases as <span class="arithmatex">\(p \to 0\)</span> or <span class="arithmatex">\(p \to 1\)</span>.</li>
+<li>Given either <span class="arithmatex">\(\rho_{\text{L}}\)</span> or <span class="arithmatex">\(\rho_{\text{M}}\)</span> (plus <span class="arithmatex">\(p\)</span>), we can
+  <strong>translate between the two scales</strong>.</li>
+</ul>
 
 <!-- Source file information -->
 
