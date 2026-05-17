@@ -6,9 +6,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Poster for [your project]">
       
       
+        <link rel="canonical" href="https://phucvu-nyu.github.io/CRT_binary_outcome_power_approximation/poster/idea/">
       
       
         <link rel="prev" href="../icc/">
@@ -22,7 +22,7 @@
     
     
       
-        <title>General Idea - Poster Website</title>
+        <title>General Idea - CRT binary outcome power approximation</title>
       
     
     
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Poster Website" class="md-header__button md-logo" aria-label="Poster Website" data-md-component="logo">
+    <a href="../.." title="CRT binary outcome power approximation" class="md-header__button md-logo" aria-label="CRT binary outcome power approximation" data-md-component="logo">
       
   <img src="../../assets/images/stat-logo.svg" alt="logo">
 
@@ -105,7 +105,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Poster Website
+            CRT binary outcome power approximation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -211,12 +211,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Poster Website" class="md-nav__button md-logo" aria-label="Poster Website" data-md-component="logo">
+    <a href="../.." title="CRT binary outcome power approximation" class="md-nav__button md-logo" aria-label="CRT binary outcome power approximation" data-md-component="logo">
       
   <img src="../../assets/images/stat-logo.svg" alt="logo">
 
     </a>
-    Poster Website
+    CRT binary outcome power approximation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -266,7 +266,7 @@
             
   
   <span class="md-ellipsis">
-    Poster
+    Technical details
   </span>
   
 
@@ -276,7 +276,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Poster
+            Technical details
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -338,6 +338,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    General idea
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -347,6 +358,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-work-with-cluster-means-not-individuals" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Work with cluster means, not individuals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reduce-the-problem-to-a-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Reduce the problem to a variance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-two-routes-for-the-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Two routes for the variance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -401,6 +458,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-work-with-cluster-means-not-individuals" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Work with cluster means, not individuals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reduce-the-problem-to-a-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Reduce the problem to a variance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-two-routes-for-the-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Two routes for the variance
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -420,26 +512,73 @@
 
 <!-- Page content -->
 <h1 id="general-idea-of-the-method">General idea of the method<a class="headerlink" href="#general-idea-of-the-method" title="Permanent link">&para;</a></h1>
-<p>We work at the <strong>cluster level</strong> and focus on the <strong>logit of the cluster mean</strong>.</p>
+<p>Our power calculation is built on a <strong>working linear model</strong> at the <strong>cluster
+level</strong>, not on the individual binary outcomes directly.</p>
+<hr />
+<h2 id="1-work-with-cluster-means-not-individuals">1. Work with cluster means, not individuals<a class="headerlink" href="#1-work-with-cluster-means-not-individuals" title="Permanent link">&para;</a></h2>
+<p>For each factorial cell <span class="arithmatex">\(j\)</span> (a particular combination of components), we look
+at the <strong>cluster mean outcome</strong></p>
+<div class="arithmatex">\[
+\bar Y_j = \frac{1}{m_j} \sum_{i=1}^{m_j} Y_{ij},
+\]</div>
+<p>and then take its logit:</p>
+<div class="arithmatex">\[
+Z_j = \text{logit}(\bar Y_j).
+\]</div>
+<p>The key approximation is that these logits follow a linear model:</p>
+<div class="arithmatex">\[
+Z_j \approx X_j \beta + \varepsilon_j,
+\]</div>
+<p>where</p>
 <ul>
-<li>Start from a logistic mixed model (with random intercept).</li>
-<li>For each factorial cell, define the <strong>cluster mean</strong> <span class="arithmatex">\(\bar Y_j\)</span>.</li>
-<li>Approximate
-  [
-    \text{logit}(\bar Y_j) \approx X_j \beta + \varepsilon_j,
-  ]
-  where <span class="arithmatex">\(\varepsilon_j\)</span> captures clustering, nonlinearity, and unequal sizes.</li>
+<li><span class="arithmatex">\(X_j\)</span> encodes the factorial components (main effects + interactions),</li>
+<li><span class="arithmatex">\(\beta\)</span> are the fixed effects of interest,</li>
+<li><span class="arithmatex">\(\varepsilon_j\)</span> collects <strong>all</strong> of the complications:
+  clustering, nonlinearity of the logit link, unequal cluster sizes, etc.</li>
 </ul>
-<p>Given an approximation to
-<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span> for each cell, we can:</p>
+<p>We do <strong>not</strong> require <span class="arithmatex">\(Z_j\)</span> to be exactly normal; we only need a good handle
+on its variance.</p>
+<hr />
+<h2 id="2-reduce-the-problem-to-a-variance">2. Reduce the problem to a variance<a class="headerlink" href="#2-reduce-the-problem-to-a-variance" title="Permanent link">&para;</a></h2>
+<p>Once we accept the working model</p>
+<div class="arithmatex">\[
+Z_j \approx X_j \beta + \varepsilon_j,
+\]</div>
+<p>standard GLS/Wald theory tells us that</p>
+<div class="arithmatex">\[
+\mathrm{Var}(\hat\beta) \approx (X^\top W^{-1} X)^{-1},
+\]</div>
+<p>where <span class="arithmatex">\(W\)</span> is a diagonal matrix with entries</p>
+<div class="arithmatex">\[
+W = \mathrm{diag}(w_1,\dots,w_J),
+\quad
+w_j \approx \mathrm{Var}\{Z_j\}
+      = \mathrm{Var}\{\text{logit}(\bar Y_j)\}.
+\]</div>
+<p>So <strong>all of the power calculation</strong> boils down to:</p>
+<blockquote>
+<p>How do we approximate<br />
+<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span> for each factorial cell <span class="arithmatex">\(j\)</span>?</p>
+</blockquote>
+<p>If we can approximate these variances well, we get:</p>
 <ol>
-<li>Form a diagonal weight matrix <span class="arithmatex">\(W\)</span>.</li>
-<li>Compute <span class="arithmatex">\(\Sigma = (X^\top W^{-1} X)^{-1}\)</span>.</li>
-<li>Use standard <strong>Wald / noncentral <span class="arithmatex">\(t\)</span></strong> theory for a contrast <span class="arithmatex">\(c^\top \beta\)</span>
-   to get power.</li>
+<li><span class="arithmatex">\(W = \mathrm{diag}(w_j)\)</span>,</li>
+<li><span class="arithmatex">\(\Sigma = (X^\top W^{-1} X)^{-1}\)</span>,</li>
+<li>For any contrast <span class="arithmatex">\(c^\top \beta\)</span> (e.g., a main effect),
+   <span class="arithmatex">\(\mathrm{SE}(\hat\theta) \approx \sqrt{c^\top \Sigma c}\)</span>,</li>
+<li>And then <strong>power</strong> from a noncentral <span class="arithmatex">\(t\)</span> test with df <span class="arithmatex">\(K - p\)</span>.</li>
 </ol>
-<p>The only hard part is approximating
-<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span> well for the binary clustered case.</p>
+<hr />
+<h2 id="3-two-routes-for-the-variance">3. Two routes for the variance<a class="headerlink" href="#3-two-routes-for-the-variance" title="Permanent link">&para;</a></h2>
+<p>In the rest of the site we describe two ways to approximate
+<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span>:</p>
+<ol>
+<li>An <strong>analytic</strong> approximation using marginal means and ICCs.</li>
+<li>An <strong>exact GLMM-based Monte Carlo</strong> approximation that works directly under
+   the random-intercept logistic model.</li>
+</ol>
+<p>The poster and this website focus on the second route: the exact Monte Carlo
+approximation implemented in <code>new_method_exact.R</code>.</p>
 
 <!-- Source file information -->
 
