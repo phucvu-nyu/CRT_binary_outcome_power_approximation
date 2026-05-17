@@ -20,7 +20,7 @@
     
     
       
-        <title>Exact Method Implementation - CRT binary outcome power approximation</title>
+        <title>Method Overview - CRT binary outcome power approximation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exact-glmm-based-method" class="md-skip">
+        <a href="#method-overview-analytic-and-exact-versions" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Exact Method Implementation
+              Method Overview
             
           </span>
         </div>
@@ -357,6 +357,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exact method
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -366,6 +377,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-specify-the-factorial-structure-and-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Specify the factorial structure and effects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-data-generating-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working data-generating model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-connect-icc-to-the-random-intercept-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Connect ICC to the random-intercept variance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-obtain-marginal-means-and-marginal-icc-analytic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Obtain marginal means and marginal ICC (analytic setup)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-approximate-the-variance-of-the-logit-cluster-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Approximate the variance of the logit cluster mean
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4. Approximate the variance of the logit cluster mean">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analytic-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytic version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exact-glmm-based-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exact (GLMM-based) version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-from-w-to-power-common-to-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. From \(W\) to power (common to both)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -399,6 +507,92 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-specify-the-factorial-structure-and-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Specify the factorial structure and effects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-data-generating-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working data-generating model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-connect-icc-to-the-random-intercept-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Connect ICC to the random-intercept variance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-obtain-marginal-means-and-marginal-icc-analytic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Obtain marginal means and marginal ICC (analytic setup)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-approximate-the-variance-of-the-logit-cluster-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Approximate the variance of the logit cluster mean
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4. Approximate the variance of the logit cluster mean">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analytic-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytic version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exact-glmm-based-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exact (GLMM-based) version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-from-w-to-power-common-to-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. From \(W\) to power (common to both)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -417,50 +611,161 @@
 
 
 <!-- Page content -->
-<h1 id="exact-glmm-based-method">Exact GLMM-based method<a class="headerlink" href="#exact-glmm-based-method" title="Permanent link">&para;</a></h1>
-<p>We implement a <strong>Monte Carlo approximation</strong> to
-<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span> under the full logistic mixed model.</p>
-<p>Key steps (see <code>new_method_exact.R</code>):</p>
-<ol>
-<li><strong>Factorial truth</strong>  </li>
-<li>Build a <span class="arithmatex">\(2^k\)</span> factorial design (effect coded <span class="arithmatex">\(\pm 1\)</span>).</li>
-<li>Specify main effects and interactions via <code>betas</code>.</li>
-<li>
-<p>Calibrate the intercept so that the all-<span class="arithmatex">\(-1\)</span> cell has baseline
-     probability <span class="arithmatex">\(p_{\text{baseline}}\)</span>.</p>
-</li>
-<li>
-<p><strong>Random intercept variance</strong>  </p>
-</li>
-<li>Specify a latent ICC <span class="arithmatex">\(\rho_{\text{L}}\)</span>.  </li>
-<li>
-<p>Convert to variance
-     <span class="arithmatex">\(\tau^2 = \frac{\pi^2}{3}\,\rho_{\text{L}}/(1-\rho_{\text{L}})\)</span>.</p>
-</li>
-<li>
-<p><strong>Variance of logit cluster means</strong>  </p>
-</li>
-<li>For each factorial cell <span class="arithmatex">\(j\)</span>, repeatedly:<ul>
-<li>Draw a random intercept <span class="arithmatex">\(b_j \sim N(0,\tau^2)\)</span>.</li>
-<li>Draw a cluster size <span class="arithmatex">\(m_j\)</span> from a chosen distribution.</li>
-<li>Generate <span class="arithmatex">\(Y_{ij} \sim \text{Bernoulli}(\text{logit}^{-1}(\eta_j + b_j))\)</span>.</li>
-<li>Compute <span class="arithmatex">\(\bar Y_j\)</span> and <span class="arithmatex">\(\text{logit}(\bar Y_j)\)</span>.</li>
+<h1 id="method-overview-analytic-and-exact-versions">Method overview (analytic and exact versions)<a class="headerlink" href="#method-overview-analytic-and-exact-versions" title="Permanent link">&para;</a></h1>
+<p>This page summarizes the main steps of our power approximation and explains how
+the <strong>analytic</strong> and <strong>exact</strong> versions differ.</p>
+<p>We assume the user specifies:</p>
+<ul>
+<li>A <strong>baseline probability</strong> <span class="arithmatex">\(p_{\text{baseline}}\)</span>,</li>
+<li>A set of <strong>components/covariates</strong> and their effects,</li>
+<li>A target <strong>ICC</strong> and cluster-size distribution,</li>
+<li>A total number of clusters <span class="arithmatex">\(K\)</span>.</li>
 </ul>
-</li>
-<li>
-<p>Use the empirical variance of these logits as <span class="arithmatex">\(w_j\)</span>.</p>
-</li>
-<li>
-<p><strong>Power</strong>  </p>
-</li>
-<li>Build <span class="arithmatex">\(W = \text{diag}(w_1,\dots,w_J)\)</span>.  </li>
-<li>Expand the factorial design to <span class="arithmatex">\(K\)</span> clusters.  </li>
-<li>Form <span class="arithmatex">\(\Sigma = (X^\top W^{-1} X)^{-1}\)</span>.  </li>
-<li>Compute power for a chosen contrast (e.g., main effect for component 1)
-     using a noncentral <span class="arithmatex">\(t\)</span> with df <span class="arithmatex">\(K - p\)</span>.</li>
+<hr />
+<h2 id="step-1-specify-the-factorial-structure-and-effects">Step 1. Specify the factorial structure and effects<a class="headerlink" href="#step-1-specify-the-factorial-structure-and-effects" title="Permanent link">&para;</a></h2>
+<p>We describe the underlying effects in terms of a factorial structure:</p>
+<ul>
+<li>Choose the number of components <span class="arithmatex">\(k\)</span> (e.g., 5 intervention components).</li>
+<li>Decide which main effects and interactions are nonzero.</li>
+<li>Encode these into a vector of coefficients (effect sizes).</li>
+</ul>
+<p>Given:</p>
+<ul>
+<li><span class="arithmatex">\(p_{\text{baseline}}\)</span>: the probability under a reference condition, and  </li>
+<li>the chosen effect sizes,</li>
+</ul>
+<p>we can compute, for each combination of components (each “cell” of the design):</p>
+<ul>
+<li>A <strong>linear predictor</strong> <span class="arithmatex">\(\eta_j\)</span>,</li>
+<li>A corresponding <strong>conditional probability</strong>
+  <span class="arithmatex">\(p_{\text{cond},j} = \text{logit}^{-1}(\eta_j)\)</span>,</li>
+</ul>
+<p>under a logistic mixed model with random intercept.</p>
+<p>At this stage, we have a set of probabilities for each cell, still conditional
+on the random intercept being zero.</p>
+<hr />
+<h2 id="working-data-generating-model">Working data-generating model<a class="headerlink" href="#working-data-generating-model" title="Permanent link">&para;</a></h2>
+<p>Conceptually, we assume a <strong>random-intercept logistic mixed model</strong>:</p>
+<div class="arithmatex">\[
+\text{logit}\{\Pr(Y_{ij} = 1)\}
+= \beta_0 + \beta^\top X_{ij} + b_j,
+\quad b_j \sim N(0,\tau^2),
+\]</div>
+<p>where</p>
+<ul>
+<li><span class="arithmatex">\(Y_{ij}\)</span> is the binary outcome for individual <span class="arithmatex">\(i\)</span> in cluster <span class="arithmatex">\(j\)</span>,</li>
+<li><span class="arithmatex">\(X_{ij}\)</span> encodes the components/covariates for that individual/cluster,</li>
+<li><span class="arithmatex">\(\beta_0, \beta\)</span> are fixed effects chosen in Step 1,</li>
+<li><span class="arithmatex">\(b_j\)</span> is a cluster-specific random intercept with variance <span class="arithmatex">\(\tau^2\)</span>.</li>
+</ul>
+<p>All subsequent steps (ICC mapping, marginal means, and variance approximations)
+refer back to this working GLMM.</p>
+<hr />
+<h2 id="step-2-connect-icc-to-the-random-intercept-variance">Step 2. Connect ICC to the random-intercept variance<a class="headerlink" href="#step-2-connect-icc-to-the-random-intercept-variance" title="Permanent link">&para;</a></h2>
+<p>The user typically thinks in terms of an <strong>ICC</strong>, not a random-effect variance.
+We work on the <strong>latent</strong> scale:</p>
+<ol>
+<li>Start from a chosen <strong>latent ICC</strong> <span class="arithmatex">\(\rho_{\text{L}}\)</span> (or convert a marginal
+   ICC to <span class="arithmatex">\(\rho_{\text{L}}\)</span> using Goldstein’s relationship).</li>
+<li>Compute the corresponding random-intercept variance 
+   <span class="arithmatex">\(
+   \tau^2 = \frac{\pi^2}{3}\,\frac{\rho_{\text{L}}}{1 - \rho_{\text{L}}}.
+   \)</span></li>
 </ol>
-<p>All of this logic is wrapped in <code>estimate_power_replicated_glmm_mc()</code> in
-<code>new_method_exact.R</code>.</p>
+<p>This gives a fully specified random-intercept logistic model for each cell:
+baseline, effects, and random-effect variance.</p>
+<hr />
+<h2 id="step-3-obtain-marginal-means-and-marginal-icc-analytic-setup">Step 3. Obtain marginal means and marginal ICC (analytic setup)<a class="headerlink" href="#step-3-obtain-marginal-means-and-marginal-icc-analytic-setup" title="Permanent link">&para;</a></h2>
+<p>To understand variability on the observed binary scale, we work with
+<strong>marginal means</strong> and <strong>marginal ICCs</strong>:</p>
+<ol>
+<li>Integrate out the random intercept to obtain <strong>marginal means</strong>
+   <span class="arithmatex">\(
+   p_{\text{marg},j}
+   = \mathbb{E}\{\text{logit}^{-1}(\eta_j + b_j)\},
+   \quad b_j \sim N(0,\tau^2),
+   \)</span>
+   for each cell <span class="arithmatex">\(j\)</span>.</li>
+<li>Use Goldstein’s approximation to convert the latent ICC <span class="arithmatex">\(\rho_{\text{L}}\)</span>
+   into a <strong>marginal ICC</strong> <span class="arithmatex">\(\rho_{\text{M},j}\)</span> for each cell, given
+   <span class="arithmatex">\(p_{\text{marg},j}\)</span>.</li>
+</ol>
+<p>Now, for every design cell, we know:</p>
+<ul>
+<li>A marginal mean <span class="arithmatex">\(p_{\text{marg},j}\)</span>,</li>
+<li>A marginal ICC <span class="arithmatex">\(\rho_{\text{M},j}\)</span>.</li>
+</ul>
+<hr />
+<h2 id="step-4-approximate-the-variance-of-the-logit-cluster-mean">Step 4. Approximate the variance of the logit cluster mean<a class="headerlink" href="#step-4-approximate-the-variance-of-the-logit-cluster-mean" title="Permanent link">&para;</a></h2>
+<p>The central quantity for our power calculation is</p>
+<div class="arithmatex">\[
+w_j \approx \mathrm{Var}\{\text{logit}(\bar Y_j)\}
+\]</div>
+<p>for each design cell <span class="arithmatex">\(j\)</span>, where <span class="arithmatex">\(\bar Y_j\)</span> is the cluster mean outcome.</p>
+<h3 id="analytic-version">Analytic version<a class="headerlink" href="#analytic-version" title="Permanent link">&para;</a></h3>
+<p>In the <strong>analytic</strong> version we:</p>
+<ol>
+<li>
+<p>Summarize the cluster-size distribution by its mean <span class="arithmatex">\(\bar m\)</span> and
+   coefficient of variation, and convert this to an <strong>effective cluster size</strong>
+   <span class="arithmatex">\(m^\star\)</span>.</p>
+</li>
+<li>
+<p>For each cell <span class="arithmatex">\(j\)</span>, approximate the variance of the cluster mean
+   <span class="arithmatex">\(\bar Y_j\)</span> using a marginal-ICC CRT formula:
+   <span class="arithmatex">\(\mathrm{Var}(\bar Y_j)
+   \approx
+   \frac{p_{\text{marg},j}(1 - p_{\text{marg},j})}{\bar m}
+   \Big[ 1 + (m^\star - 1)\rho_{\text{M},j} \Big].
+   \)</span></p>
+</li>
+<li>
+<p>Apply the <strong>delta method</strong> to the logit function to get
+   <span class="arithmatex">\(
+   w_j
+   \approx
+   \frac{\mathrm{Var}(\bar Y_j)}
+        {p_{\text{marg},j}^2 (1 - p_{\text{marg},j})^2}.
+   \)</span></p>
+</li>
+</ol>
+<p>These <span class="arithmatex">\(w_j\)</span> become the diagonal entries of a working weight matrix <span class="arithmatex">\(W\)</span>.</p>
+<h3 id="exact-glmm-based-version">Exact (GLMM-based) version<a class="headerlink" href="#exact-glmm-based-version" title="Permanent link">&para;</a></h3>
+<p>In the <strong>exact</strong> version, Step 4 is replaced by a dedicated Monte Carlo
+approximation under the full random-intercept logistic model:</p>
+<p>For each cell <span class="arithmatex">\(j\)</span>:</p>
+<ol>
+<li>Draw a <strong>cluster size</strong> <span class="arithmatex">\(m_j\)</span> from the chosen distribution
+   (e.g. around the target mean).</li>
+<li>Draw a <strong>random intercept</strong> <span class="arithmatex">\(b_j \sim N(0,\tau^2)\)</span>.</li>
+<li>Use the GLMM to obtain a cluster-specific probability
+   <span class="arithmatex">\(\Pr(Y_{ij}=1)\)</span> for that cell.</li>
+<li>Generate <span class="arithmatex">\(m_j\)</span> binary outcomes in that cluster and compute the cluster
+   mean <span class="arithmatex">\(\bar Y_j\)</span>.</li>
+<li>Take <span class="arithmatex">\(\text{logit}(\bar Y_j)\)</span> (with a small continuity correction).</li>
+<li>Repeat many times and take the <strong>empirical variance</strong> of these logits; this
+   is our estimate of <span class="arithmatex">\(w_j\)</span>.</li>
+</ol>
+<p>Thus, both versions aim to approximate the same quantity
+<span class="arithmatex">\(\mathrm{Var}\{\text{logit}(\bar Y_j)\}\)</span>, but they do so in different ways:
+analytic formulas versus direct Monte Carlo under the GLMM.</p>
+<hr />
+<h2 id="step-5-from-w-to-power-common-to-both">Step 5. From <span class="arithmatex">\(W\)</span> to power (common to both)<a class="headerlink" href="#step-5-from-w-to-power-common-to-both" title="Permanent link">&para;</a></h2>
+<p>Once we have <span class="arithmatex">\(w_j\)</span> for each design cell, the remaining steps are identical for
+the analytic and exact versions:</p>
+<ol>
+<li>Form the diagonal matrix <span class="arithmatex">\(W = \mathrm{diag}(w_j)\)</span>.</li>
+<li>Expand the set of cells to the desired <strong>number of clusters</strong> <span class="arithmatex">\(K\)</span> using a
+   balanced allocation of clusters to cells.</li>
+<li>Use generalized least squares to obtain a <strong>working covariance matrix</strong>
+   <span class="arithmatex">\(\Sigma\)</span> for the estimated fixed effects.</li>
+<li>For any contrast of interest (e.g. a main effect), compute
+   <span class="arithmatex">\(\mathrm{SE}(\hat\theta)\)</span> from <span class="arithmatex">\(\Sigma\)</span> and obtain <strong>power</strong> from a
+   noncentral <span class="arithmatex">\(t\)</span> distribution with degrees of freedom <span class="arithmatex">\(K - p\)</span>, where
+   <span class="arithmatex">\(p\)</span> is the number of fixed-effect parameters in the fitted model.</li>
+</ol>
+<p>The only difference between the analytic and exact methods is <strong>how</strong> <span class="arithmatex">\(w_j\)</span> is
+obtained in Step 4; the rest of the workflow is the same.</p>
 
 <!-- Source file information -->
 
